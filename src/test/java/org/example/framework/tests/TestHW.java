@@ -68,7 +68,7 @@ public class TestHW extends BaseTest {
         int cartSumWithThreePlaystations = app.getCartPage()
                 .cartSum();
 
-        assertThat(cartSumWithThreePlaystations, is(playstationPriceAfterSelectedOptions*3));
+        assertThat(cartSumWithThreePlaystations, is(playstationPriceAfterSelectedOptions * 3));
 
         Assertions.assertFalse(app.getCartPage()
                 .restoreLastRemoved()
@@ -76,6 +76,6 @@ public class TestHW extends BaseTest {
         int cartSumAfterGameRestore = app.getCartPage()
                 .checkAmountIsCorrect()
                 .cartSum();
-        assertThat(cartSumAfterGameRestore,is(cartSumWithThreePlaystations + gamePrice));
+        assertThat(cartSumAfterGameRestore, is(cartSumWithThreePlaystations + gamePrice));
     }
 }

@@ -14,6 +14,7 @@ public class BaseTest {
 
     /**
      * Менеджер страничек
+     *
      * @see org.example.framework.managers.PageManager#getPageManager()
      */
     protected PageManager app = PageManager.getPageManager();

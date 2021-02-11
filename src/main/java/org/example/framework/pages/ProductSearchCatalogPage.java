@@ -13,6 +13,9 @@ import static org.hamcrest.Matchers.is;
 
 public class ProductSearchCatalogPage extends BasePage {
 
+    /**
+     * Найденные продукты по запросу
+     */
     @FindBy(xpath = "//div[@class='n-catalog-product__main']")
     private List<WebElement> productsFound;
 
@@ -43,7 +46,7 @@ public class ProductSearchCatalogPage extends BasePage {
             if (title.getText().trim().toLowerCase().contains(productName)) {
                 productFullName = title.getText();
                 //scrollToElementJs(title);
-                scrollWithOffset(title,0, -200);
+                scrollWithOffset(title, 0, -200);
                 elementToBeClickable(title);
                 title.click();
                 return app.getProductPage();

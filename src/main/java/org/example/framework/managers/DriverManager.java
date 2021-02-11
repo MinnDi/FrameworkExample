@@ -112,7 +112,7 @@ public class DriverManager {
     /**
      * Метод инициализирующий веб драйвер под любую ОС
      *
-     * @param gecko - переменная firefox из файла application.properties в классе {@link org.example.framework.utils.PropConst}
+     * @param gecko  - переменная firefox из файла application.properties в классе {@link org.example.framework.utils.PropConst}
      * @param chrome - переменная chrome из файла application.properties в классе {@link org.example.framework.utils.PropConst}
      */
     private void initDriverAnyOsFamily(String gecko, String chrome) {

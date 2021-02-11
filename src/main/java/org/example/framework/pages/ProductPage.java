@@ -12,12 +12,21 @@ import static org.hamcrest.Matchers.is;
 
 public class ProductPage extends BasePage {
 
+    /**
+     * Доп. гарантия для продукта
+     */
     @FindBy(xpath = "//select[@class='ui-input-select product-warranty__select']")
     WebElement warrantyOption;
 
+    /**
+     * Цена продукта
+     */
     @FindBy(xpath = "//span[contains(@class, 'product-card-price__current')]")
     WebElement productPriceField;
 
+    /**
+     * Купить продукт
+     */
     @FindBy(xpath = "//button[contains(.,'Купить')]")
     WebElement buyProductButton;
 
@@ -87,10 +96,10 @@ public class ProductPage extends BasePage {
      */
     public ProductPage buyProduct() {
         Integer cartSumBeforeAddition = getCartPrice();
-        Integer cartAmountBeforeAddition = Integer.parseInt(cartAmount.getAttribute("textContent").replaceAll("\\D",""));
+        Integer cartAmountBeforeAddition = Integer.parseInt(cartAmount.getAttribute("textContent").replaceAll("\\D", ""));
 
         wait.until(ExpectedConditions.elementToBeClickable(buyProductButton));
-        scrollWithOffset(buyProductButton,0,-200);
+        scrollWithOffset(buyProductButton, 0, -200);
         buyProductButton.click();
         //wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(cartSum, cartSumBeforeAddition.toString())));
         //wait.until(ExpectedConditions.visibilityOf(cartSum));
@@ -104,7 +113,7 @@ public class ProductPage extends BasePage {
         Integer cartSumAfterAddition = getCartPrice();
 
         // Проверка, что в корзине сумма изменилась именно на ту цену, по которой выбран товар
-        assertThat(cartSumAfterAddition, is(cartSumBeforeAddition + Integer.parseInt(productPriceField.getText().replaceAll("\\D",""))));
+        assertThat(cartSumAfterAddition, is(cartSumBeforeAddition + Integer.parseInt(productPriceField.getText().replaceAll("\\D", ""))));
         return this;
     }
 

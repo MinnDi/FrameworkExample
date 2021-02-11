@@ -187,8 +187,8 @@ public class BasePage {
      * @param productName - краткое название продукта для поиска
      * @return ProductSearchCatalogPage - переходит на страницу выбора продукта в найденных результатах {@link ProductSearchCatalogPage}
      */
-    public ProductSearchCatalogPage searchForProductByName(String productName){
-        fillInputField(searchField,productName+ Keys.ENTER);
+    public ProductSearchCatalogPage searchForProductByName(String productName) {
+        fillInputField(searchField, productName + Keys.ENTER);
         return app.getProductSearchCatalogPage().checkOpenProductSearchCatalogPage(productName);
     }
 
@@ -198,25 +198,30 @@ public class BasePage {
      * @param productName - краткое название продукта для поиска
      * @return ProductPage - переходит на страницу выбора продукта в найденных результатах {@link ProductPage}
      */
-    public ProductPage searchForProduct(String productName){
-        fillInputField(searchField,productName+ Keys.ENTER);
+    public ProductPage searchForProduct(String productName) {
+        fillInputField(searchField, productName + Keys.ENTER);
         return app.getProductPage().checkOpenProductPage(productName);
     }
 
     /**
      * Метод суммы корзины
+     *
      * @return Integer - сумма всех продуктов в корзине
      */
-    public Integer getCartPrice(){
-        if (cartAmount.getAttribute("textContent").replaceAll("\\D", "").equals("0")){
+    public Integer getCartPrice() {
+        if (cartAmount.getAttribute("textContent").replaceAll("\\D", "").equals("0")) {
             return 0;
-        }
-        else {
+        } else {
             return Integer.parseInt(cartSumField.getText().replaceAll("\\D", ""));
         }
     }
 
-    public CartPage goToCartPage(){
+    /**
+     * Переход на страницу корзины
+     *
+     * @return страница корзины
+     */
+    public CartPage goToCartPage() {
         wait.until(ExpectedConditions.elementToBeClickable(cartLink));
         cartLink.click();
         return app.getCartPage();
